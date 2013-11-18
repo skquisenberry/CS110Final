@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 //Scott Quisenberry
 //CS 110
-//Assignment 5 #3, Card class
+//Final Project: Card Class
 
 public class Card
 {
