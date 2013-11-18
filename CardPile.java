@@ -40,12 +40,12 @@ public class CardPile
    }
    
    /**
-      The second add method adds a card to the beginning of the ArrayList.
+      The second add method adds a card to the end of the ArrayList.
       @param card The card to be added.
    */
    public void add(Card card)
    {
-      pile.add(0, card);
+      pile.add(pile.size(), card);
    }
    
    /**
