@@ -131,15 +131,13 @@ public class Card
    }
    
    /**
-      The greaterThan method returns true if the rank of the card is greater than the rank of the card given as a parameter.
-      @param otherCard The Card that is compared.
+      The compareTo method returns a positive int if the card has a higher rank than the card argument.
+      Returns a negative int if the card has a lower rank than the card argument.
+      Returns 0 if the cards have the same rank.
    */
-   public boolean greaterThan(Card otherCard)
+   public int compareTo(Card other)
    {
-      if(this.rank > otherCard.rank)
-         return true;
-      else
-         return false;
+      return this.rank - other.rank;
    }
    
 }
