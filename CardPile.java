@@ -70,6 +70,15 @@ public class CardPile
       return card;
    }
    
-   
+   /**
+      The isEmpty method returns true if there are no cards in the pile and false if there are any cards in the pile.
+   */
+   public boolean isEmpty()
+   {
+      if(pile.size() == 0)
+         return true;
+      else
+         return false;
+   }
    
 }
