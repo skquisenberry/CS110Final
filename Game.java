@@ -9,7 +9,7 @@ public class Game
    public static void main(String [] args)
    {
       boolean win = false;
-      Card tempC, tempP;
+      Card tempC, tempP, tempC2, tempP2, tempCF, tempPF; //tempC3, tempP3, tempC4, tempP4;
       
       //create the deck and the hands
       CardPile deck = new Deck();
@@ -23,6 +23,8 @@ public class Game
          playerHand.add(deck.get());
       }
       
+      System.out.println("The game of War! Aces are low.");
+      
       //the game of war
       while(!win)
       {
@@ -32,6 +34,7 @@ public class Game
          if(tempC.compareTo(tempP) > 0)
          {
             System.out.println("Computer wins this round.");
+            //add the cards into the Computer's hand
             compHand.add(tempP);
             compHand.add(tempC);
             if(compHand.isEmpty() || playerHand.isEmpty())
@@ -40,6 +43,7 @@ public class Game
          else if(tempC.compareTo(tempP) < 0)
          {
             System.out.println("You win this round.");
+            //add the cards into the Player's hand
             playerHand.add(tempC);
             playerHand.add(tempP);
             if(compHand.isEmpty() || playerHand.isEmpty())
@@ -47,7 +51,45 @@ public class Game
          }
          else
          {
-            
+            if(compHand.isEmpty() || playerHand.isEmpty())
+               win = true;
+            else
+            {
+               System.out.println("War!");
+               //place first card face down and store
+               tempCF = compHand.get();
+               tempPF = playerHand.get();
+               //keep next card
+               tempC2 = compHand.get();
+               tempP2 = playerHand.get();
+               System.out.println("Computer has  " + tempC2 + "\nYou have " + tempP2);
+               if(tempC2.compareTo(tempP2) > 0)
+               {
+                  System.out.println("Computer wins this round.");
+                  //add the cards into the Computer's hand
+                  compHand.add(tempP2);
+                  compHand.add(tempC2);
+                  compHand.add(tempPF);
+                  compHand.add(tempCF);
+                  if(compHand.isEmpty() || playerHand.isEmpty())
+                     win = true;
+               }
+               else if(tempC2.compareTo(tempP2) < 0)
+               {
+                  System.out.println("You win this round.");
+                  //add the cards into the Player's hand
+                  playerHand.add(tempC2);
+                  playerHand.add(tempP2);
+                  playerHand.add(tempCF);
+                  playerHand.add(tempPF);
+                  if(compHand.isEmpty() || playerHand.isEmpty())
+                     win = true;
+               }
+               else
+               {
+                  
+               }
+            }
          }
       }
       
