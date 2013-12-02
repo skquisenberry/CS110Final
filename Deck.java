@@ -32,15 +32,24 @@ public class Deck extends CardPile
    */
    public void shuffle()
    {
-      Card temp;
+      Card temp, temp2;
       int index;
       
-      for(int k = 1; k <= 52; k++)
+      for(int k = 1; k <= 51; k++)
       {
-         index = rand.nextInt(52);
-         temp = super.get(k);
+         index = rand.nextInt(51) + 1;
+         temp = super.get(index);
+         temp2 = super.get(k);
          super.add(k, temp);
+         super.add(index, temp2);
       }
+   }
+   
+   
+   public static void main(String [] args)
+   {
+      Deck d = new Deck();
+      System.out.println(d.get());
    }
    
 }
