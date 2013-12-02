@@ -81,4 +81,12 @@ public class CardPile
          return false;
    }
    
+   /**
+      The size method returns the size of the ArrayList
+   */
+   public int size()
+   {
+      return pile.size() - 1;
+   }
+   
 }
