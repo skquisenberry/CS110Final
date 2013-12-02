@@ -45,11 +45,4 @@ public class Deck extends CardPile
       }
    }
    
-   
-   public static void main(String [] args)
-   {
-      Deck d = new Deck();
-      System.out.println(d.get());
-   }
-   
 }
