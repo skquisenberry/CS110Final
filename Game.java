@@ -30,10 +30,10 @@ public class Game
       {
          tempC = compHand.get();
          tempP = playerHand.get();
-         System.out.println("Computer has  " + tempC + "\nYou have " + tempP);
+         System.out.println("Player 1 has  " + tempP + "\nPlayer 2 has " + tempC);
          if(tempC.compareTo(tempP) > 0)
          {
-            System.out.println("Computer wins this round.");
+            System.out.println("Player 2 wins this round.");
             //add the cards into the Computer's hand
             compHand.add(tempP);
             compHand.add(tempC);
@@ -42,7 +42,7 @@ public class Game
          }
          else if(tempC.compareTo(tempP) < 0)
          {
-            System.out.println("You win this round.");
+            System.out.println("Player 1 wins this round.");
             //add the cards into the Player's hand
             playerHand.add(tempC);
             playerHand.add(tempP);
@@ -51,7 +51,7 @@ public class Game
          }
          else
          {
-            if(compHand.isEmpty() || playerHand.isEmpty())
+            if(compHand.size() < 1 || playerHand.size() < 1)
                win = true;
             else
             {
@@ -62,10 +62,10 @@ public class Game
                //keep next card
                tempC2 = compHand.get();
                tempP2 = playerHand.get();
-               System.out.println("Computer has  " + tempC2 + "\nYou have " + tempP2);
+               System.out.println("Player 1 has  " + tempP2 + "\nPlayer 2 has " + tempC2);
                if(tempC2.compareTo(tempP2) > 0)
                {
-                  System.out.println("Computer wins this round.");
+                  System.out.println("Player 2 wins this round.");
                   //add the cards into the Computer's hand
                   compHand.add(tempP2);
                   compHand.add(tempC2);
@@ -76,7 +76,7 @@ public class Game
                }
                else if(tempC2.compareTo(tempP2) < 0)
                {
-                  System.out.println("You win this round.");
+                  System.out.println("Player 1 wins this round.");
                   //add the cards into the Player's hand
                   playerHand.add(tempC2);
                   playerHand.add(tempP2);
@@ -92,6 +92,12 @@ public class Game
             }
          }
       }
+      
+      //check for overall winner
+      if(playerHand.isEmpty())
+         System.out.println("Player 2 wins!");
+      else
+         System.out.println("Player 1 wins!");
       
    }
    
