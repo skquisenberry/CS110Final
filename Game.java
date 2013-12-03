@@ -51,7 +51,7 @@ public class Game
          }
          else
          {
-            if(compHand.size() < 1 || playerHand.size() < 1)
+            if(compHand.isEmpty() || playerHand.isEmpty())
                win = true;
             else
             {
@@ -59,6 +59,24 @@ public class Game
                //place first card face down and store
                tempCF = compHand.get();
                tempPF = playerHand.get();
+               if(compHand.isEmpty() || playerHand.isEmpty())
+               {
+                  win = true;
+                  if(compHand.isEmpty())
+                  {
+                     playerHand.add(tempCF);
+                     playerHand.add(tempPF);
+                     System.out.println("Player 2 ran out of cards in the war!");
+                  }
+                  else
+                  {
+                     compHand.add(tempPF);
+                     compHand.add(tempCF);
+                     System.out.println("Player 1 ran out of cardsin the war!");
+                  }
+               }
+               else
+               {
                //keep next card
                tempC2 = compHand.get();
                tempP2 = playerHand.get();
@@ -88,6 +106,7 @@ public class Game
                else
                {
                   
+               }
                }
             }
          }
