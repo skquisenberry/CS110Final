@@ -2,11 +2,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-class MyFrame extends JFrame 
+class WarGUI extends JFrame 
 {
    private JPanel top, bottom, cardSpace;
    private JLabel label;
-   MyFrame(String s) 
+   WarGUI(String s) 
    {
       super(s);
       setLayout(new GridLayout(2, 1));
@@ -23,7 +23,7 @@ class MyFrame extends JFrame
    
    public static void main(String [] args)
    {
-      JFrame frame = new MyFrame("Hello");
+      JFrame frame = new WarGUI("Hello");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setSize(500,500);
       frame.validate();
