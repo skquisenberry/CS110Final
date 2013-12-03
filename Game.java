@@ -8,6 +8,10 @@ public class Game
    
    public static void main(String [] args)
    {
+      //comp is player 2, player is player 1
+      //aces high
+      
+      //create variables
       boolean win = false;
       Card tempC, tempP, tempC2, tempP2, tempCF, tempPF; //tempC3, tempP3, tempC4, tempP4;
       
@@ -34,7 +38,7 @@ public class Game
          if(tempC.compareTo(tempP) > 0)
          {
             System.out.println("Player 2 wins this round.");
-            //add the cards into the Computer's hand
+            //add the cards into Player 2's hand
             compHand.add(tempP);
             compHand.add(tempC);
             if(compHand.isEmpty() || playerHand.isEmpty())
@@ -43,7 +47,7 @@ public class Game
          else if(tempC.compareTo(tempP) < 0)
          {
             System.out.println("Player 1 wins this round.");
-            //add the cards into the Player's hand
+            //add the cards into Player 1's hand
             playerHand.add(tempC);
             playerHand.add(tempP);
             if(compHand.isEmpty() || playerHand.isEmpty())
@@ -59,9 +63,11 @@ public class Game
                //place first card face down and store
                tempCF = compHand.get();
                tempPF = playerHand.get();
+               //check if either player is out of cards
                if(compHand.isEmpty() || playerHand.isEmpty())
                {
                   win = true;
+                  //if so, then determine which and decide winner appropriately
                   if(compHand.isEmpty())
                   {
                      playerHand.add(tempCF);
@@ -77,36 +83,36 @@ public class Game
                }
                else
                {
-               //keep next card
-               tempC2 = compHand.get();
-               tempP2 = playerHand.get();
-               System.out.println("Player 1 has  " + tempP2 + "\nPlayer 2 has " + tempC2);
-               if(tempC2.compareTo(tempP2) > 0)
-               {
-                  System.out.println("Player 2 wins this round.");
-                  //add the cards into the Computer's hand
-                  compHand.add(tempP2);
-                  compHand.add(tempC2);
-                  compHand.add(tempPF);
-                  compHand.add(tempCF);
-                  if(compHand.isEmpty() || playerHand.isEmpty())
-                     win = true;
-               }
-               else if(tempC2.compareTo(tempP2) < 0)
-               {
-                  System.out.println("Player 1 wins this round.");
-                  //add the cards into the Player's hand
-                  playerHand.add(tempC2);
-                  playerHand.add(tempP2);
-                  playerHand.add(tempCF);
-                  playerHand.add(tempPF);
-                  if(compHand.isEmpty() || playerHand.isEmpty())
-                     win = true;
-               }
-               else
-               {
-                  
-               }
+                  //keep next card
+                  tempC2 = compHand.get();
+                  tempP2 = playerHand.get();
+                  System.out.println("Player 1 has  " + tempP2 + "\nPlayer 2 has " + tempC2);
+                  if(tempC2.compareTo(tempP2) > 0)
+                  {
+                     System.out.println("Player 2 wins this round.");
+                     //add the cards into Player 2's hand
+                     compHand.add(tempP2);
+                     compHand.add(tempC2);
+                     compHand.add(tempPF);
+                     compHand.add(tempCF);
+                     if(compHand.isEmpty() || playerHand.isEmpty())
+                        win = true;
+                  }
+                  else if(tempC2.compareTo(tempP2) < 0)
+                  {
+                     System.out.println("Player 1 wins this round.");
+                     //add the cards into Player 1's hand
+                     playerHand.add(tempC2);
+                     playerHand.add(tempP2);
+                     playerHand.add(tempCF);
+                     playerHand.add(tempPF);
+                     if(compHand.isEmpty() || playerHand.isEmpty())
+                        win = true;
+                  }
+                  else
+                  {
+                     
+                  }
                }
             }
          }
