@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 //Scott Quisenberry
 //CS 110
@@ -7,17 +10,25 @@ import java.util.Scanner;
 public class Game
 {
    
+   private static boolean cont;
+   
    public static void main(String [] args)
    {
       //comp is player 2, player is player 1
-      //aces high
+      //aces low
+      
+      //create frame
+      JFrame frame = new WarGUI("The Game of War");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setSize(500,500);
+      frame.validate();
+      frame.setVisible(true);
       
       //create Sanner
       Scanner input = new Scanner(System.in);
       
       //create variables
       boolean win = false;
-      boolean cont;
       String contString;
       Card tempC, tempP, tempC2, tempP2, tempCF, tempPF, tempC3, tempP3, tempCF2, tempPF2;
       
@@ -188,9 +199,7 @@ public class Game
             System.out.print("Continue? (y/n): ");
             contString = input.nextLine();
             if(contString.equals("y"))
-               cont = true;
-            else
-               cont = false;
+               continueGame();
          }while(cont == false);
       }
       
@@ -202,5 +211,10 @@ public class Game
       
    }
    
+   
+   public static void continueGame()
+   {
+      cont = true;
+   }
    
 }
