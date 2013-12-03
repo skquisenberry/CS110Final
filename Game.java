@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 //Scott Quisenberry
 //CS 110
@@ -11,8 +12,13 @@ public class Game
       //comp is player 2, player is player 1
       //aces high
       
+      //create Sanner
+      Scanner input = new Scanner(System.in);
+      
       //create variables
       boolean win = false;
+      boolean cont;
+      String contString;
       Card tempC, tempP, tempC2, tempP2, tempCF, tempPF; //tempC3, tempP3, tempC4, tempP4;
       
       //create the deck and the hands
@@ -32,6 +38,9 @@ public class Game
       //the game of war
       while(!win)
       {
+         //set continue to false
+         cont = false;
+         
          tempC = compHand.get();
          tempP = playerHand.get();
          System.out.println("Player 1 has  " + tempP + "\nPlayer 2 has " + tempC);
@@ -116,6 +125,16 @@ public class Game
                }
             }
          }
+         //stops the program to step through each round
+         do
+         {
+            System.out.print("Continue? (y/n): ");
+            contString = input.nextLine();
+            if(contString.equals("y"))
+               cont = true;
+            else
+               cont = false;
+         }while(cont == false);
       }
       
       //check for overall winner
