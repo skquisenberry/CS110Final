@@ -19,7 +19,7 @@ public class Game
       boolean win = false;
       boolean cont;
       String contString;
-      Card tempC, tempP, tempC2, tempP2, tempCF, tempPF; //tempC3, tempP3, tempC4, tempP4;
+      Card tempC, tempP, tempC2, tempP2, tempCF, tempPF, tempC3, tempP3, tempCF2, tempPF2;
       
       //create the deck and the hands
       CardPile deck = new Deck();
@@ -62,6 +62,7 @@ public class Game
             if(compHand.isEmpty() || playerHand.isEmpty())
                win = true;
          }
+         //if war
          else
          {
             if(compHand.isEmpty() || playerHand.isEmpty())
@@ -87,7 +88,7 @@ public class Game
                   {
                      compHand.add(tempPF);
                      compHand.add(tempCF);
-                     System.out.println("Player 1 ran out of cardsin the war!");
+                     System.out.println("Player 1 ran out of cards in the war!");
                   }
                }
                else
@@ -118,9 +119,65 @@ public class Game
                      if(compHand.isEmpty() || playerHand.isEmpty())
                         win = true;
                   }
+                  //double war
                   else
                   {
-                     
+                     if(compHand.isEmpty() || playerHand.isEmpty())
+                        win = true;
+                     else
+                     {
+                        System.out.println("Double War!");
+                        //place first card face down and store
+                        tempCF2 = compHand.get();
+                        tempPF2 = playerHand.get();
+                        //check if either player is out of cards
+                        if(compHand.isEmpty() || playerHand.isEmpty())
+                        {
+                           win = true;
+                           //if so, then determine which and decide winner appropriately
+                           if(compHand.isEmpty())
+                           {
+                              playerHand.add(tempCF2);
+                              playerHand.add(tempPF2);
+                              System.out.println("Player 2 ran out of cards in the double war!");
+                           }
+                           else
+                           {
+                              compHand.add(tempPF2);
+                              compHand.add(tempCF2);
+                              System.out.println("Player 1 ran out of cards in the double war!");
+                           }
+                        }
+                        else
+                        {
+                           //keep next card
+                           tempC3 = compHand.get();
+                           tempP3 = playerHand.get();
+                           System.out.println("Player 1 has  " + tempP3 + "\nPlayer 2 has " + tempC3);
+                           if(tempC2.compareTo(tempP2) > 0)
+                           {
+                              System.out.println("Player 2 wins this round.");
+                              //add the cards into Player 2's hand
+                              compHand.add(tempP3);
+                              compHand.add(tempC3);
+                              compHand.add(tempPF2);
+                              compHand.add(tempCF2);
+                              if(compHand.isEmpty() || playerHand.isEmpty())
+                                 win = true;
+                           }
+                           else if(tempC3.compareTo(tempP3) < 0)
+                           {
+                              System.out.println("Player 1 wins this round.");
+                              //add the cards into Player 1's hand
+                              playerHand.add(tempC3);
+                              playerHand.add(tempP3);
+                              playerHand.add(tempCF2);
+                              playerHand.add(tempPF2);
+                              if(compHand.isEmpty() || playerHand.isEmpty())
+                                 win = true;
+                           }
+                        }
+                     }
                   }
                }
             }
