@@ -4,16 +4,29 @@ import java.awt.*;
 import java.awt.event.*;
 class MyFrame extends JFrame 
 {
-   private JPanel p1,p2;
+   private JPanel top, bottom, cardSpace;
    private JLabel label;
    MyFrame(String s) 
    {
       super(s);
-      setLayout(new FlowLayout());
-      p1 = new JPanel();
-      p1.setBackground(Color.green);
-      label = new JLabel("I'm a label..");
-      p1.add(label); // default location, center
-      add(p1);
+      setLayout(new GridLayout(2, 1));
+      top = new JPanel(new GridLayout(1, 4));
+      add(top);
+      bottom = new JPanel(new GridLayout(1, 1));
+      add(bottom);
+      JButton button = new JButton("Next Round");
+      bottom.add(button);
+      cardSpace = new JPanel(new GridLayout(1, 4));
+      top.add(cardSpace);
+      
+   }
+   
+   public static void main(String [] args)
+   {
+      JFrame frame = new MyFrame("Hello");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setSize(500,500);
+      frame.validate();
+      frame.setVisible(true);
    }
 }
