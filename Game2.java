@@ -18,7 +18,6 @@ public class Game2
    
    private boolean cont;
    private CardPile deck, compHand, playerHand, pot;
-   private Scanner input;
    private Card p1, p2;
    
    /**
@@ -42,15 +41,38 @@ public class Game2
    
    /**
       The turn method represents a single turn in the game, wars included.
+      Anytime there is a war, the program runs through another step and flips a card
    */
    public void turn()
    {
       int wars = 0;
       boolean p1Win;
       do
-      {
+      {  
+         
+         //if this is a war, announce the war round and add the top card from each player into the pot
          if(wars > 0)
-            System.out.println("War number " + wars);
+         {
+            System.out.println("War round " + wars);
+            pot.add(playerHand.get());
+            pot.add(compHand.get());
+            
+            //if there is a war and either player has less than two cards in their hand, the pot is added to the winning player's hand
+            if(playerHand.isEmpty())
+            {
+               while(!pot.isEmpty())
+                  compHand.add(pot.get());
+               System.out.println("Player 2 ran out of cards in the war!");
+               return;
+            }
+            else if(compHand.isEmpty())
+            {
+               while(!pot.isEmpty())
+                  playerHand.add(pot.get());
+               System.out.println("Player 2 ran out of cards in the war!");
+               return;
+            }
+         }
          
          //get the cards for each player
          p1 = playerHand.get();
@@ -71,22 +93,28 @@ public class Game2
             
          wars++;
       }
-      while(war(p1, p2));  //loop while there is a war
+      while(war(p1, p2) && !gameOver());  //loop while there is a war
       
       //add pot to appropriate hand
       if(p1Win)
       {
          while(!pot.isEmpty())
             playerHand.add(pot.get());
+         System.out.println("Player 1 wins this round");
       }
       else
       {
          while(!pot.isEmpty())
             compHand.add(pot.get());
+         System.out.println("Player 2 wins this round");
       }
    }
    
-   
+   /**
+      The war method returns true if the cards are of equal rank, meaning there is a war.
+      @param p1 A card to be tested
+      @param p2 A card to be tested
+   */
    public boolean war(Card p1, Card p2)
    {
       if(p1.equals(p2))
@@ -95,4 +123,35 @@ public class Game2
          return false;
    }
    
+   /**
+      The gameOver method returns true if either player's hand is empty, meaning the game is done.
+      If the game is over, it will print the winner of the game.
+   */
+   public boolean gameOver()
+   {
+      if(playerHand.isEmpty() || compHand.isEmpty())
+      {
+         if(playerHand.isEmpty())
+            System.out.println("Player 2 wins!");
+         else
+            System.out.println("Player 1 wins!");
+         return true;
+      }
+      else
+         return false;
+   }
+   
+   
+   public static void main(String [] args)
+   {
+      Game2 war = new Game2();
+      Scanner input = new Scanner(System.in);
+      String cont;
+      
+      //cont = input.nextLine();
+      while(!war.gameOver())
+      {
+         war.turn();
+      }
+   }
 }
