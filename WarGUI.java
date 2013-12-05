@@ -9,7 +9,7 @@ class WarGUI extends JFrame
    private ImageIcon back, cardOneImage, cardTwoImage;
    private Game2 game;
    
-   WarGUI(String s) 
+   public WarGUI(String s) 
    {
       super(s);
       //set layout for full GUI
@@ -28,7 +28,7 @@ class WarGUI extends JFrame
       
       //create the card labels
       cardBack = new JLabel();
-      back = new ImageIcon("/cards/back.jpg");
+      back = new ImageIcon("cards/back.jpg");
       cardBack = new JLabel(back);
       cardOne = new JLabel("Player 1's card");
       cardTwo = new JLabel("Player 2's card");
@@ -57,9 +57,20 @@ class WarGUI extends JFrame
    {
       
       Game2 game;
-      public void actionPerformed(ActionEvent e)
+      
+      /**
+         The ButtonListener constructor creates a game to step through
+      */
+      public ButtonListener()
       {
          game = new Game2();
+      }
+      
+      /**
+         The actionPerformed method steps the game through one turn at a time.
+      */
+      public void actionPerformed(ActionEvent e)
+      {
          game.turn();
       }
    
