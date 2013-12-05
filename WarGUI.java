@@ -5,7 +5,8 @@ import java.awt.event.*;
 class WarGUI extends JFrame 
 {
    private JPanel top, bottom, titleSpace, cardSpace;
-   private JLabel title, cardBack, cardOne, cardTwo;
+   private JLabel title, cardBack, cardBack2, cardOne, cardTwo;
+   private ImageIcon back, cardOneImage, cardTwoImage;
    private Game2 game;
    
    WarGUI(String s) 
@@ -24,6 +25,21 @@ class WarGUI extends JFrame
       //create panel for cards
       cardSpace = new JPanel(new GridLayout(1, 4));
       add(cardSpace);
+      
+      //create the card labels
+      cardBack = new JLabel();
+      back = new ImageIcon("/cards/back.jpg");
+      cardBack = new JLabel(back);
+      cardOne = new JLabel("Player 1's card");
+      cardTwo = new JLabel("Player 2's card");
+      cardBack2 = new JLabel(back);
+      
+      //add in the card labels
+      cardSpace.add(cardBack);
+      cardSpace.add(cardOne);
+      cardSpace.add(cardTwo);
+      cardSpace.add(cardBack2);
+      
       
       //create panel for button
       bottom = new JPanel(new GridLayout(1, 1));
@@ -51,7 +67,6 @@ class WarGUI extends JFrame
    
    public static void main(String [] args)
    {
-      Game2 game = new Game2();
       JFrame frame = new WarGUI("Hello");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.setSize(500,500);
