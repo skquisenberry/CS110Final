@@ -68,19 +68,23 @@ class WarGUI extends JFrame
       */
       public void actionPerformed(ActionEvent e)
       {
+         
+         //step the game through one turn
          game.turn();
          
+         //say the card
          cardOne.setText(game.getP1().toString());
          cardTwo.setText(game.getP2().toString());
          
-         if(game.getNumWars() == 1)
+         //set the status bar
+         if(game.getNumWars() == 1) //if there were no wars
          {
             if(game.getP1().compareTo(game.getP2()) > 0)
                status.setText("Player 1 wins this round.");
             else
                status.setText("Player 2 wins this round.");
          }
-         else
+         else                       //if there was at least one war
          {
             if(game.getP1().compareTo(game.getP2()) > 0)
                status.setText("Player 1 wins this round after " + (game.getNumWars() - 1) + " wars.");
