@@ -128,10 +128,8 @@ class WarGUI extends JFrame
          //step the game through one turn
          game.turn();
          
-         //say the card
-         cardOne.setText(game.getP1().toString());
-         cardTwo.setText(game.getP2().toString());
-         
+         try
+         {
          //set the card images for player 1
          //hearts
          if(game.getP1().getSuit() == 1)
@@ -321,9 +319,17 @@ class WarGUI extends JFrame
                   
             }
          }
+         }
+         //if no cards in hand
+         catch(NullPointerException nullPoint)
+         {
+            cardOne.setText("Out of cards");
+         }
          
          //set the card images for player 2
          //hearts
+         try
+         {
          if(game.getP2().getSuit() == 1)
          {
             switch(game.getP2().getRank())
@@ -512,6 +518,12 @@ class WarGUI extends JFrame
                   
             }
 
+         }
+         }
+         //if no cards
+         catch (NullPointerException nullPoint2)
+         {
+            cardTwo.setText("Out of cards");
          }
          
          //set the status bar
