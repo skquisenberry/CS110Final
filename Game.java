@@ -9,212 +9,153 @@ import java.awt.event.*;
 
 public class Game
 {
+   /*
+      The game of war.
+      Aces are low.
+      player is player 1
+      comp is player 2
+   */
    
-   private static boolean cont;
+   private boolean cont;
+   private int wars;
+   private CardPile deck, compHand, playerHand, pot;
+   private Card p1, p2;
    
-   public static void main(String [] args)
+   /**
+      The constructor deals out the cards from the shuffled deck into the hands of player 1 and player 2
+   */
+   public Game()
    {
-      //comp is player 2, player is player 1
-      //aces low
-      
-      //create frame
-      JFrame frame = new WarGUI("The Game of War");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setSize(500,500);
-      frame.validate();
-      frame.setVisible(true);
-      
-      //create Sanner
-      Scanner input = new Scanner(System.in);
-      
-      //create variables
-      boolean win = false;
-      String contString;
-      Card tempC, tempP, tempC2, tempP2, tempCF, tempPF, tempC3, tempP3, tempCF2, tempPF2;
-      
-      //create the deck and the hands
-      CardPile deck = new Deck();
-      CardPile playerHand = new Hand();
-      CardPile compHand = new Hand();
-      
-      //deal out the cards
+      //create deck and hands and deal cards
+      deck = new Deck();
+      compHand = new Hand();
+      playerHand = new Hand();
+      pot = new CardPile();
       while(!deck.isEmpty())
       {
          compHand.add(deck.get());
          playerHand.add(deck.get());
       }
       
-      System.out.println("The game of War! Aces are low.");
       
-      //the game of war
-      while(!win)
-      {
-         //set continue to false
-         cont = false;
+   }
+   
+   /**
+      The turn method represents a single turn in the game, wars included.
+      Anytime there is a war, the program runs through another step and flips a card
+   */
+   public void turn()
+   {
+      wars = 0;
+      boolean p1Win;
+      do
+      {  
          
-         tempC = compHand.get();
-         tempP = playerHand.get();
-         System.out.println("Player 1 has  " + tempP + "\nPlayer 2 has " + tempC);
-         if(tempC.compareTo(tempP) > 0)
+         //if this is a war, announce the war round and add the top card from each player into the pot
+         if(wars > 0)
          {
-            System.out.println("Player 2 wins this round.");
-            //add the cards into Player 2's hand
-            compHand.add(tempP);
-            compHand.add(tempC);
-            if(compHand.isEmpty() || playerHand.isEmpty())
-               win = true;
-         }
-         else if(tempC.compareTo(tempP) < 0)
-         {
-            System.out.println("Player 1 wins this round.");
-            //add the cards into Player 1's hand
-            playerHand.add(tempC);
-            playerHand.add(tempP);
-            if(compHand.isEmpty() || playerHand.isEmpty())
-               win = true;
-         }
-         //if war
-         else
-         {
-            if(compHand.isEmpty() || playerHand.isEmpty())
-               win = true;
-            else
+            System.out.println("War round " + wars);
+            pot.add(playerHand.get());
+            pot.add(compHand.get());
+            
+            //if there is a war and either player has less than two cards in their hand, the pot is added to the winning player's hand
+            if(playerHand.isEmpty())
             {
-               System.out.println("War!");
-               //place first card face down and store
-               tempCF = compHand.get();
-               tempPF = playerHand.get();
-               //check if either player is out of cards
-               if(compHand.isEmpty() || playerHand.isEmpty())
-               {
-                  win = true;
-                  //if so, then determine which and decide winner appropriately
-                  if(compHand.isEmpty())
-                  {
-                     playerHand.add(tempCF);
-                     playerHand.add(tempPF);
-                     System.out.println("Player 2 ran out of cards in the war!");
-                  }
-                  else
-                  {
-                     compHand.add(tempPF);
-                     compHand.add(tempCF);
-                     System.out.println("Player 1 ran out of cards in the war!");
-                  }
-               }
-               else
-               {
-                  //keep next card
-                  tempC2 = compHand.get();
-                  tempP2 = playerHand.get();
-                  System.out.println("Player 1 has  " + tempP2 + "\nPlayer 2 has " + tempC2);
-                  if(tempC2.compareTo(tempP2) > 0)
-                  {
-                     System.out.println("Player 2 wins this round.");
-                     //add the cards into Player 2's hand
-                     compHand.add(tempP2);
-                     compHand.add(tempC2);
-                     compHand.add(tempPF);
-                     compHand.add(tempCF);
-                     if(compHand.isEmpty() || playerHand.isEmpty())
-                        win = true;
-                  }
-                  else if(tempC2.compareTo(tempP2) < 0)
-                  {
-                     System.out.println("Player 1 wins this round.");
-                     //add the cards into Player 1's hand
-                     playerHand.add(tempC2);
-                     playerHand.add(tempP2);
-                     playerHand.add(tempCF);
-                     playerHand.add(tempPF);
-                     if(compHand.isEmpty() || playerHand.isEmpty())
-                        win = true;
-                  }
-                  //double war
-                  else
-                  {
-                     if(compHand.isEmpty() || playerHand.isEmpty())
-                        win = true;
-                     else
-                     {
-                        System.out.println("Double War!");
-                        //place first card face down and store
-                        tempCF2 = compHand.get();
-                        tempPF2 = playerHand.get();
-                        //check if either player is out of cards
-                        if(compHand.isEmpty() || playerHand.isEmpty())
-                        {
-                           win = true;
-                           //if so, then determine which and decide winner appropriately
-                           if(compHand.isEmpty())
-                           {
-                              playerHand.add(tempCF2);
-                              playerHand.add(tempPF2);
-                              System.out.println("Player 2 ran out of cards in the double war!");
-                           }
-                           else
-                           {
-                              compHand.add(tempPF2);
-                              compHand.add(tempCF2);
-                              System.out.println("Player 1 ran out of cards in the double war!");
-                           }
-                        }
-                        else
-                        {
-                           //keep next card
-                           tempC3 = compHand.get();
-                           tempP3 = playerHand.get();
-                           System.out.println("Player 1 has  " + tempP3 + "\nPlayer 2 has " + tempC3);
-                           if(tempC2.compareTo(tempP2) > 0)
-                           {
-                              System.out.println("Player 2 wins this round.");
-                              //add the cards into Player 2's hand
-                              compHand.add(tempP3);
-                              compHand.add(tempC3);
-                              compHand.add(tempPF2);
-                              compHand.add(tempCF2);
-                              if(compHand.isEmpty() || playerHand.isEmpty())
-                                 win = true;
-                           }
-                           else if(tempC3.compareTo(tempP3) < 0)
-                           {
-                              System.out.println("Player 1 wins this round.");
-                              //add the cards into Player 1's hand
-                              playerHand.add(tempC3);
-                              playerHand.add(tempP3);
-                              playerHand.add(tempCF2);
-                              playerHand.add(tempPF2);
-                              if(compHand.isEmpty() || playerHand.isEmpty())
-                                 win = true;
-                           }
-                        }
-                     }
-                  }
-               }
+               while(!pot.isEmpty())
+                  compHand.add(pot.get());
+               System.out.println("Player 2 ran out of cards in the war!");
+               return;
+            }
+            else if(compHand.isEmpty())
+            {
+               while(!pot.isEmpty())
+                  playerHand.add(pot.get());
+               System.out.println("Player 2 ran out of cards in the war!");
+               return;
             }
          }
-         //stops the program to step through each round
-         do
-         {
-            System.out.print("Continue? (y/n): ");
-            contString = input.nextLine();
-            if(contString.equals("y"))
-               continueGame();
-         }while(cont == false);
+         
+         //get the cards for each player
+         p1 = playerHand.get();
+         p2 = compHand.get();  
+         
+         //print the cards
+         System.out.println("Player 1 has " + p1 + "\nPlayer 2 has " + p2);
+         
+         //add cards to the pot
+         pot.add(p1);
+         pot.add(p2);
+         
+         //decide winner
+         if(p1.compareTo(p2) > 0)
+            p1Win = true;
+         else
+            p1Win = false;
+            
+         wars++;
       }
+      while(war(p1, p2) && !gameOver());  //loop while there is a war
       
-      //check for overall winner
-      if(playerHand.isEmpty())
-         System.out.println("Player 2 wins!");
+      //add pot to appropriate hand
+      if(p1Win)
+      {
+         while(!pot.isEmpty())
+            playerHand.add(pot.get());
+         System.out.println("Player 1 wins this round");
+      }
       else
-         System.out.println("Player 1 wins!");
-      
+      {
+         while(!pot.isEmpty())
+            compHand.add(pot.get());
+         System.out.println("Player 2 wins this round");
+      }
    }
    
-   
-   public static void continueGame()
+   /**
+      The war method returns true if the cards are of equal rank, meaning there is a war.
+      @param p1 A card to be tested
+      @param p2 A card to be tested
+   */
+   public boolean war(Card p1, Card p2)
    {
-      cont = true;
+      if(p1.equals(p2))
+         return true;
+      else
+         return false;
    }
    
+   /**
+      The gameOver method returns true if either player's hand is empty, meaning the game is done.
+      If the game is over, it will print the winner of the game.
+   */
+   public boolean gameOver()
+   {
+      if(playerHand.isEmpty() || compHand.isEmpty())
+      {
+         if(playerHand.isEmpty())
+            System.out.println("Player 2 wins!");
+         else
+            System.out.println("Player 1 wins!");
+         return true;
+      }
+      else
+         return false;
+   }
+   
+   
+   
+   
+   
+   public static void main(String [] args)
+   {
+      Game war = new Game();
+      Scanner input = new Scanner(System.in);
+      String cont;
+      
+      //cont = input.nextLine();
+      while(!war.gameOver())
+      {
+         war.turn();
+      }
+   }
 }
