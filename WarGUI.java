@@ -72,9 +72,21 @@ class WarGUI extends JFrame
          
          cardOne.setText(game.getP1().toString());
          cardTwo.setText(game.getP2().toString());
-         //if(game.getP1().
          
-         if(
+         if(game.getNumWars() == 1)
+         {
+            if(game.getP1().compareTo(game.getP2()) > 0)
+               status.setText("Player 1 wins this round.");
+            else
+               status.setText("Player 2 wins this round.");
+         }
+         else
+         {
+            if(game.getP1().compareTo(game.getP2()) > 0)
+               status.setText("Player 1 wins this round after " + (game.getNumWars() - 1) + " wars.");
+            else
+               status.setText("Player 2 wins this round after " + (game.getNumWars() - 1) + " wars.");
+         }
          
       }
    
@@ -84,7 +96,7 @@ class WarGUI extends JFrame
    {
       JFrame frame = new WarGUI("Hello");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setSize(500,800);
+      frame.setSize(650,800);
       frame.setResizable(false);
       frame.validate();
       frame.setVisible(true);
