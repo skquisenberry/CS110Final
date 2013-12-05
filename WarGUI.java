@@ -139,45 +139,379 @@ class WarGUI extends JFrame
             switch(game.getP1().getRank())
             {
                case 1:
+                  cardOne.setIcon(aceh);
+                  break;
+               case 2:
+                  cardOne.setIcon(h2);
+                  break;
+               case 3:
+                  cardOne.setIcon(h3);
+                  break;
+               case 4:
+                  cardOne.setIcon(h4);
+                  break;
+               case 5:
+                  cardOne.setIcon(h5);
+                  break;
+               case 6:
+                  cardOne.setIcon(h6);
+                  break;
+               case 7:
+                  cardOne.setIcon(h7);
+                  break;
+               case 8:
+                  cardOne.setIcon(h8);
+                  break;
+               case 9:
+                  cardOne.setIcon(h9);
+                  break;
+               case 10:
+                  cardOne.setIcon(h10);
+                  break;
+               case 11:
+                  cardOne.setIcon(jackh);
+                  break;
+               case 12:
+                  cardOne.setIcon(queenh);
+                  break;
+               case 13:
+                  cardOne.setIcon(kingh);
+                  break;
                   
             }
          }
          //diamonds
          else if(game.getP1().getSuit() == 2)
          {
-         
+            switch(game.getP1().getRank())
+            {
+               case 1:
+                  cardOne.setIcon(aced);
+                  break;
+               case 2:
+                  cardOne.setIcon(d2);
+                  break;
+               case 3:
+                  cardOne.setIcon(d3);
+                  break;
+               case 4:
+                  cardOne.setIcon(d4);
+                  break;
+               case 5:
+                  cardOne.setIcon(d5);
+                  break;
+               case 6:
+                  cardOne.setIcon(d6);
+                  break;
+               case 7:
+                  cardOne.setIcon(d7);
+                  break;
+               case 8:
+                  cardOne.setIcon(d8);
+                  break;
+               case 9:
+                  cardOne.setIcon(d9);
+                  break;
+               case 10:
+                  cardOne.setIcon(d10);
+                  break;
+               case 11:
+                  cardOne.setIcon(jackd);
+                  break;
+               case 12:
+                  cardOne.setIcon(queend);
+                  break;
+               case 13:
+                  cardOne.setIcon(kingd);
+                  break;
+                  
+            }
          }
          //clubs
          else if(game.getP1().getSuit() == 3)
          {
-         
+            switch(game.getP1().getRank())
+            {
+               case 1:
+                  cardOne.setIcon(acec);
+                  break;
+               case 2:
+                  cardOne.setIcon(c2);
+                  break;
+               case 3:
+                  cardOne.setIcon(c3);
+                  break;
+               case 4:
+                  cardOne.setIcon(c4);
+                  break;
+               case 5:
+                  cardOne.setIcon(c5);
+                  break;
+               case 6:
+                  cardOne.setIcon(c6);
+                  break;
+               case 7:
+                  cardOne.setIcon(c7);
+                  break;
+               case 8:
+                  cardOne.setIcon(c8);
+                  break;
+               case 9:
+                  cardOne.setIcon(c9);
+                  break;
+               case 10:
+                  cardOne.setIcon(c10);
+                  break;
+               case 11:
+                  cardOne.setIcon(jackc);
+                  break;
+               case 12:
+                  cardOne.setIcon(queenc);
+                  break;
+               case 13:
+                  cardOne.setIcon(kingc);
+                  break;
+                  
+            }
          }
          //spades
          else if(game.getP1().getSuit() == 4)
          {
-         
+            switch(game.getP1().getRank())
+            {
+               case 1:
+                  cardOne.setIcon(aces);
+                  break;
+               case 2:
+                  cardOne.setIcon(s2);
+                  break;
+               case 3:
+                  cardOne.setIcon(s3);
+                  break;
+               case 4:
+                  cardOne.setIcon(s4);
+                  break;
+               case 5:
+                  cardOne.setIcon(s5);
+                  break;
+               case 6:
+                  cardOne.setIcon(s6);
+                  break;
+               case 7:
+                  cardOne.setIcon(s7);
+                  break;
+               case 8:
+                  cardOne.setIcon(s8);
+                  break;
+               case 9:
+                  cardOne.setIcon(s9);
+                  break;
+               case 10:
+                  cardOne.setIcon(s10);
+                  break;
+               case 11:
+                  cardOne.setIcon(jacks);
+                  break;
+               case 12:
+                  cardOne.setIcon(queens);
+                  break;
+               case 13:
+                  cardOne.setIcon(kings);
+                  break;
+                  
+            }
          }
          
          //set the card images for player 2
          //hearts
          if(game.getP2().getSuit() == 1)
          {
-         
+            switch(game.getP2().getRank())
+            {
+               case 1:
+                  cardTwo.setIcon(aceh);
+                  break;
+               case 2:
+                  cardTwo.setIcon(h2);
+                  break;
+               case 3:
+                  cardTwo.setIcon(h3);
+                  break;
+               case 4:
+                  cardTwo.setIcon(h4);
+                  break;
+               case 5:
+                  cardTwo.setIcon(h5);
+                  break;
+               case 6:
+                  cardTwo.setIcon(h6);
+                  break;
+               case 7:
+                  cardTwo.setIcon(h7);
+                  break;
+               case 8:
+                  cardTwo.setIcon(h8);
+                  break;
+               case 9:
+                  cardTwo.setIcon(h9);
+                  break;
+               case 10:
+                  cardTwo.setIcon(h10);
+                  break;
+               case 11:
+                  cardTwo.setIcon(jackh);
+                  break;
+               case 12:
+                  cardTwo.setIcon(queenh);
+                  break;
+               case 13:
+                  cardTwo.setIcon(kingh);
+                  break;
+                  
+            }
          }
          //diamonds
          else if(game.getP2().getSuit() == 2)
          {
-         
+            switch(game.getP2().getRank())
+            {
+               case 1:
+                  cardTwo.setIcon(aceh);
+                  break;
+               case 2:
+                  cardTwo.setIcon(h2);
+                  break;
+               case 3:
+                  cardTwo.setIcon(h3);
+                  break;
+               case 4:
+                  cardTwo.setIcon(h4);
+                  break;
+               case 5:
+                  cardTwo.setIcon(h5);
+                  break;
+               case 6:
+                  cardTwo.setIcon(h6);
+                  break;
+               case 7:
+                  cardTwo.setIcon(h7);
+                  break;
+               case 8:
+                  cardTwo.setIcon(h8);
+                  break;
+               case 9:
+                  cardTwo.setIcon(h9);
+                  break;
+               case 10:
+                  cardTwo.setIcon(h10);
+                  break;
+               case 11:
+                  cardTwo.setIcon(jackh);
+                  break;
+               case 12:
+                  cardTwo.setIcon(queenh);
+                  break;
+               case 13:
+                  cardTwo.setIcon(kingh);
+                  break;
+                  
+            }
          }
          //clubs
          else if(game.getP2().getSuit() == 3)
          {
-         
+            switch(game.getP2().getRank())
+            {
+               case 1:
+                  cardTwo.setIcon(acec);
+                  break;
+               case 2:
+                  cardTwo.setIcon(c2);
+                  break;
+               case 3:
+                  cardTwo.setIcon(c3);
+                  break;
+               case 4:
+                  cardTwo.setIcon(c4);
+                  break;
+               case 5:
+                  cardTwo.setIcon(c5);
+                  break;
+               case 6:
+                  cardTwo.setIcon(c6);
+                  break;
+               case 7:
+                  cardTwo.setIcon(c7);
+                  break;
+               case 8:
+                  cardTwo.setIcon(c8);
+                  break;
+               case 9:
+                  cardTwo.setIcon(c9);
+                  break;
+               case 10:
+                  cardTwo.setIcon(c10);
+                  break;
+               case 11:
+                  cardTwo.setIcon(jackc);
+                  break;
+               case 12:
+                  cardTwo.setIcon(queenc);
+                  break;
+               case 13:
+                  cardTwo.setIcon(kingc);
+                  break;
+                  
+            }
+
          }
          //spades
          else if(game.getP2().getSuit() == 4)
          {
-         
+            switch(game.getP2().getRank())
+            {
+               case 1:
+                  cardTwo.setIcon(aces);
+                  break;
+               case 2:
+                  cardTwo.setIcon(s2);
+                  break;
+               case 3:
+                  cardTwo.setIcon(s3);
+                  break;
+               case 4:
+                  cardTwo.setIcon(s4);
+                  break;
+               case 5:
+                  cardTwo.setIcon(s5);
+                  break;
+               case 6:
+                  cardTwo.setIcon(s6);
+                  break;
+               case 7:
+                  cardTwo.setIcon(s7);
+                  break;
+               case 8:
+                  cardTwo.setIcon(s8);
+                  break;
+               case 9:
+                  cardTwo.setIcon(s9);
+                  break;
+               case 10:
+                  cardTwo.setIcon(s10);
+                  break;
+               case 11:
+                  cardTwo.setIcon(jacks);
+                  break;
+               case 12:
+                  cardTwo.setIcon(queens);
+                  break;
+               case 13:
+                  cardTwo.setIcon(kings);
+                  break;
+                  
+            }
+
          }
          
          //set the status bar
