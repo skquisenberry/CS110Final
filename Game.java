@@ -142,8 +142,29 @@ public class Game
          return false;
    }
    
+   /**
+      The getP1 method returns the card for Player 1
+   */
+   public Card getP1()
+   {
+      return p1;
+   }
    
+   /**
+      The getP2 method returns the card for Player 2
+   */
+   public Card getP2()
+   {
+      return p2;
+   }
    
+   /**
+      The getNumWars method returns the int wars, which is the number of wars in one turn.
+   */
+   public int getNumWars()
+   {
+      return wars;
+   }
    
    
    public static void main(String [] args)

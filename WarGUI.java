@@ -4,19 +4,20 @@ import java.awt.*;
 import java.awt.event.*;
 class WarGUI extends JFrame 
 {
-   private JPanel top, bottom, titleSpace, cardSpace;
-   private JLabel title, cardBack, cardBack2, cardOne, cardTwo;
+   private JPanel statusPanel, bottom, titleSpace, cardSpace;
+   private JLabel title, status, cardBack, cardBack2, cardOne, cardTwo;
    private ImageIcon back, cardOneImage, cardTwoImage;
-   private Game2 game;
+   private Game game;
    
    public WarGUI(String s) 
    {
       super(s);
+      game = new Game();
       //set layout for full GUI
-      setLayout(new GridLayout(3, 1));
+      setLayout(new GridLayout(4, 1));
       
       //create title
-      titleSpace = new JPanel(new GridLayout(1, 1));
+      titleSpace = new JPanel(new FlowLayout());
       add(titleSpace);
       title = new JLabel("War! Aces are low.");
       title.setFont(new Font("ARIAL", Font.BOLD, 40));
@@ -40,6 +41,12 @@ class WarGUI extends JFrame
       cardSpace.add(cardTwo);
       cardSpace.add(cardBack2);
       
+      //create panel for status
+      statusPanel = new JPanel(new FlowLayout());
+      add(statusPanel);
+      status = new JLabel("Waiting for the first move.");
+      status.setFont(new Font("ARIAL", Font.BOLD, 35));
+      statusPanel.add(status);
       
       //create panel for button
       bottom = new JPanel(new GridLayout(1, 1));
@@ -56,22 +63,19 @@ class WarGUI extends JFrame
    private class ButtonListener implements ActionListener
    {
       
-      Game2 game;
-      
-      /**
-         The ButtonListener constructor creates a game to step through
-      */
-      public ButtonListener()
-      {
-         game = new Game2();
-      }
-      
       /**
          The actionPerformed method steps the game through one turn at a time.
       */
       public void actionPerformed(ActionEvent e)
       {
          game.turn();
+         
+         cardOne.setText(game.getP1().toString());
+         cardTwo.setText(game.getP2().toString());
+         //if(game.getP1().
+         
+         if(
+         
       }
    
    }
@@ -80,7 +84,8 @@ class WarGUI extends JFrame
    {
       JFrame frame = new WarGUI("Hello");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setSize(500,500);
+      frame.setSize(500,800);
+      frame.setResizable(false);
       frame.validate();
       frame.setVisible(true);
    }
