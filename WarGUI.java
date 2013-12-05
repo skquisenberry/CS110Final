@@ -538,7 +538,7 @@ class WarGUI extends JFrame
    {
       JFrame frame = new WarGUI("Hello");
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setSize(650,800);
+      frame.setSize(650,850);
       frame.setResizable(false);
       frame.validate();
       frame.setVisible(true);
