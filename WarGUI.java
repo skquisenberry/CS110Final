@@ -324,6 +324,7 @@ class WarGUI extends JFrame
          catch(NullPointerException nullPoint)
          {
             cardOne.setText("Out of cards");
+            cardBack.setText("Out of cards");
          }
          
          //set the card images for player 2
@@ -524,6 +525,7 @@ class WarGUI extends JFrame
          catch (NullPointerException nullPoint2)
          {
             cardTwo.setText("Out of cards");
+            cardBack2.setText("Out of cards");
          }
          
          //set the status bar
